@@ -13,11 +13,11 @@ _______ _          _______             _______
 
 '
 # In this section, we will prompt the users' names to be identified
-puts "Insert name for Player X"
+puts 'Insert name for Player X'
 player_x = gets.chomp
 puts "Alrigth #{player_x}, you will be the Xs"
 puts
-puts "Insert name for Player O"
+puts 'Insert name for Player O'
 player_o = gets.chomp
 puts "And #{player_o}, you will be the Os"
 puts
@@ -31,7 +31,6 @@ def display_board(ttt_board)
 end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
 
 # Player 1 will pick a number
 puts "#{player_x} pick a number 0-8"
@@ -60,5 +59,3 @@ board[o_picked.to_i] = token_o
 puts
 puts "#{player_o}  chose #{o_picked.to_i}"
 display_board(board)
-
-# So far, the board doesn't show any changes after user's input, that change will be implemented in the game logic section.
