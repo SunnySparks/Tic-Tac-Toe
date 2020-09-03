@@ -65,23 +65,54 @@ while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
   puts 'invalid move'
   # this part will evaluate the winner by using the winning
   # combinations for each player
-  winner_x = true if (ttt_board[0] == 'x') && (ttt_board[0] == ttt_board[1]) && (ttt_board[1] == ttt_board[2])
-  winner_x = true if (ttt_board[3] == 'x') && (ttt_board[3] == ttt_board[4]) && (ttt_board[4] == ttt_board[5])
-  winner_x = true if (ttt_board[6] == 'x') && (ttt_board[6] == ttt_board[7]) && (ttt_board[7] == ttt_board[8])
-  winner_x = true if (ttt_board[0] == 'x') && (ttt_board[0] == ttt_board[3]) && (ttt_board[3] == ttt_board[6])
-  winner_x = true if (ttt_board[1] == 'x') && (ttt_board[1] == ttt_board[4]) && (ttt_board[4] == ttt_board[7])
-  winner_x = true if (ttt_board[2] == 'x') && (ttt_board[2] == ttt_board[5]) && (ttt_board[5] == ttt_board[8])
-  winner_x = true if (ttt_board[6] == 'x') && (ttt_board[6] == ttt_board[4]) && (ttt_board[4] == ttt_board[2])
-  winner_x = true if (ttt_board[8] == 'x') && (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
+  winner_x = true if (ttt_board[0] == 'x') &&
+                     (ttt_board[0] == ttt_board[1]) &&
+                     (ttt_board[1] == ttt_board[2])
+  winner_x = true if (ttt_board[3] == 'x') &&
+                     (ttt_board[3] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[5])
+  winner_x = true if (ttt_board[6] == 'x') &&
+                     (ttt_board[6] == ttt_board[7]) &&
+                     (ttt_board[7] == ttt_board[8])
+  winner_x = true if (ttt_board[0] == 'x') &&
+                     (ttt_board[0] == ttt_board[3]) &&
+                     (ttt_board[3] == ttt_board[6])
+  winner_x = true if (ttt_board[1] == 'x') &&
+                     (ttt_board[1] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[7])
+  winner_x = true if (ttt_board[2] == 'x') &&
+                     (ttt_board[2] == ttt_board[5]) &&
+                     (ttt_board[5] == ttt_board[8])
+  winner_x = true if (ttt_board[6] == 'x') &&
+                     (ttt_board[6] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[2])
+  winner_x = true if (ttt_board[8] == 'x') &&
+                     (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
 
-  winner_o = true if (ttt_board[0] == 'o') && (ttt_board[0] == ttt_board[1]) && (ttt_board[1] == ttt_board[2])
-  winner_o = true if (ttt_board[3] == 'o') && (ttt_board[3] == ttt_board[4]) && (ttt_board[4] == ttt_board[5])
-  winner_o = true if (ttt_board[6] == 'o') && (ttt_board[6] == ttt_board[7]) && (ttt_board[7] == ttt_board[8])
-  winner_o = true if (ttt_board[0] == 'o') && (ttt_board[0] == ttt_board[3]) && (ttt_board[3] == ttt_board[6])
-  winner_o = true if (ttt_board[1] == 'o') && (ttt_board[1] == ttt_board[4]) && (ttt_board[4] == ttt_board[7])
-  winner_o = true if (ttt_board[2] == 'o') && (ttt_board[2] == ttt_board[5]) && (ttt_board[5] == ttt_board[8])
-  winner_o = true if (ttt_board[6] == 'o') && (ttt_board[6] == ttt_board[4]) && (ttt_board[4] == ttt_board[2])
-  winner_o = true if (ttt_board[8] == 'o') && (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
+  winner_o = true if (ttt_board[0] == 'o') &&
+                     (ttt_board[0] == ttt_board[1]) &&
+                     (ttt_board[1] == ttt_board[2])
+  winner_o = true if (ttt_board[3] == 'o') &&
+                     (ttt_board[3] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[5])
+  winner_o = true if (ttt_board[6] == 'o') &&
+                     (ttt_board[6] == ttt_board[7]) &&
+                     (ttt_board[7] == ttt_board[8])
+  winner_o = true if (ttt_board[0] == 'o') &&
+                     (ttt_board[0] == ttt_board[3]) &&
+                     (ttt_board[3] == ttt_board[6])
+  winner_o = true if (ttt_board[1] == 'o') &&
+                     (ttt_board[1] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[7])
+  winner_o = true if (ttt_board[2] == 'o') &&
+                     (ttt_board[2] == ttt_board[5]) &&
+                     (ttt_board[5] == ttt_board[8])
+  winner_o = true if (ttt_board[6] == 'o') &&
+                     (ttt_board[6] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[2])
+  winner_o = true if (ttt_board[8] == 'o') &&
+                     (ttt_board[8] == ttt_board[4]) &&
+                     (ttt_board[4] == ttt_board[0])
 end
 
 # This condition will check if a user has already won or not
