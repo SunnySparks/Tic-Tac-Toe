@@ -9,7 +9,7 @@ AllCops:
 Metrics/LineLength:
 Max: 150 
 Layout/LineLength:
-  Max: 200
+  Enabled: false
 Metrics/MethodLength:
   Max: 120
 Metrics/AbcSize:
@@ -46,6 +46,8 @@ Lint/RaiseException:
 Lint/Syntax:
   Enabled: false  
 Lint/StructNewOverride:
+  Enabled: false
+Lint/UselessAssignment:
   Enabled: false
 Style/HashEachMethods:
   Enabled: false

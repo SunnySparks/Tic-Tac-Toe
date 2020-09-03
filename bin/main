@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
-# rubocop:disable LineLength
-# rubocop:disable Lint/UselessAssignment
+# frozen_string_literal: true
 
 puts '
 _______ _          _______             _______
@@ -91,6 +90,3 @@ elsif winner_o == true
 else
   puts "It's a draw"
 end
-
-# rubocop:enable Lint/UselessAssignment
-# rubocop:enable LineLength
