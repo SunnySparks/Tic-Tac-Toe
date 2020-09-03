@@ -5,10 +5,12 @@ AllCops:
 
   DisplayCopNames: true
 
+Metrics/LineLength:
+Max: 150 
 Layout/LineLength:
-  Max: 120
+  Max: 200
 Metrics/MethodLength:
-  Max: 20
+  Max: 120
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -40,6 +42,8 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 Lint/RaiseException:
   Enabled: false
+Lint/Syntax:
+  Enabled: false  
 Lint/StructNewOverride:
   Enabled: false
 Style/HashEachMethods:
