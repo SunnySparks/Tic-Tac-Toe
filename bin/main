@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-# frozen_string_literal: true
-
 puts '
 _______ _          _______             _______
 |__   __(_)        |__   __|           |__   __|
