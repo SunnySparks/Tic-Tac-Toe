@@ -1,5 +1,6 @@
-# frozen_string_literal: true
 #!/usr/bin/env ruby
+
+# frozen_string_literal: true
 
 puts '
 _______ _          _______             _______
@@ -35,11 +36,12 @@ turns = 0
 while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
 
   # Player 1 will pick a number
-  puts "#{player_x} pick a number 0-8"
+  puts "Turn number #{turns}, it's #{player_x}'s turn'"
   # The board is displayed so the user can see which number he will pick
   display_board(board)
   # Here the program shows the selection of player 1
-  puts "Turn number #{turns}, it's #{player_x}'s turn'"
+  puts
+  puts "#{player_x} pick a number 0-8"
   x_picked = gets.chomp
   token_x = 'x'
   board[x_picked.to_i] = token_x
@@ -47,6 +49,8 @@ while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
 
   # Here the program shows the selection of player 2
   puts "Turn number #{turns}, it's #{player_o}'s turn'"
+  display_board(board)
+  puts "#{player_o} pick a number 0-8"
   o_picked = gets.chomp
   token_o = 'O'
   board[o_picked.to_i] = token_o
