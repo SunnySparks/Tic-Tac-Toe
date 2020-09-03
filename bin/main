@@ -19,7 +19,8 @@ puts 'Insert name for Player O'
 player_o = gets.chomp
 puts "And #{player_o}, you will be the Os"
 puts
-
+winner_x = false
+winner_o =false
 def display_board(ttt_board)
   puts "#{ttt_board[0]}(0) | #{ttt_board[1]}(1)   |#{ttt_board[2]}(2)"
   puts '______________________'
@@ -133,8 +134,61 @@ while turns <= 5 do or winner == false
     is_valid = true
   end
 
-  if 
+ #  this part will evaluate the winner by using the winning combinations for each player
 
+        if ((ttt_board[0]=="x")(ttt_board[0]==ttt_board[1])&& (ttt_board[1]==ttt_board[2])) 
+            winner_x = true 
+        end
+        if ((ttt_board[3]=="x")(ttt_board[3]==ttt_board[4])&& (ttt_board[4]==ttt_board[5]))
+            winner_x = true 
+        end
+        if ((ttt_board[6]=="x")(ttt_board[6]==ttt_board[7])&& (ttt_board[7]==ttt_board[8]))
+            winner_x = true 
+        end
+        if ((ttt_board[0]=="x")(ttt_board[0]==ttt_board[3])&& (ttt_board[3]==ttt_board[6]))
+            winner_x = true 
+        end
+        if ((ttt_board[1]=="x")(ttt_board[1]==ttt_board[4])&& (ttt_board[4]==ttt_board[7]))
+            winner_x = true 
+        end
+        if ((ttt_board[2]=="x")(ttt_board[2]==ttt_board[5])&& (ttt_board[5]==ttt_board[8]))
+            winner_x = true 
+        end
+        if ((ttt_board[6]=="x")(ttt_board[6]==ttt_board[4])&& (ttt_board[4]==ttt_board[2]))
+            winner_x = true 
+        end
+        if ((ttt_board[8]=="x")(ttt_board[8]==ttt_board[4])&& (ttt_board[4]==ttt_board[0]))
+            winner_x = true 
+        end    
+        puts "#{player_x} you are the winner!!"
+
+        if ((ttt_board[0]=="x")(ttt_board[0]==ttt_board[1])&& (ttt_board[1]==ttt_board[2]))
+
+        end
+        if ((ttt_board[3]=="o")(ttt_board[3]==ttt_board[4])&& (ttt_board[4]==ttt_board[5]))
+             winner_o = true 
+        end
+        if ((ttt_board[6]=="o")(ttt_board[6]==ttt_board[7])&& (ttt_board[7]==ttt_board[8]))
+             winner_o = true   
+        end
+        if ((ttt_board[0]=="o")(ttt_board[0]==ttt_board[3])&& (ttt_board[3]==ttt_board[6]))
+            winner_o = true   
+        end
+         if ((ttt_board[1]=="o")(ttt_board[1]==ttt_board[4])&& (ttt_board[4]==ttt_board[7]))
+            winner_o = true  
+        end
+        if ((ttt_board[2]=="o")(ttt_board[2]==ttt_board[5])&& (ttt_board[5]==ttt_board[8]))
+             winner_o = true  
+        end
+        if ((ttt_board[6]=="o")(ttt_board[6]==ttt_board[4])&& (ttt_board[4]==ttt_board[2]))
+            winner_o = true  
+        end
+        if ((ttt_board[8]=="o")(ttt_board[8]==ttt_board[4])&& (ttt_board[4]==ttt_board[0]))
+            winner_o = true   
+        end    
+    puts "#{player_o} you are the winner!!"
+
+    turns += 1
 end
 
 
