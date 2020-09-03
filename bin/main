@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # rubocop:disable LineLength
+# rubocop:disable Lint/UselessAssignment
 
 puts '
 _______ _          _______             _______
@@ -28,109 +29,42 @@ end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-# ttt_board[0] = 0
-# ttt_board[0] = 1
-# ttt_board[0] = 2
-# ttt_board[0] = 3
-# ttt_board[0] = 4
-# ttt_board[0] = 5
-# ttt_board[0] = 6
-# ttt_board[0] = 7
-# ttt_board[0] = 8
-#
-# valid0 = false
-# valid1 = false
-# valid2 = false
-# valid3 = false
-# valid4 = false
-# valid5 = false
-# valid6 = false
-# valid7 = false
-# valid8 = false
 turns = 0
-# picked_to_i = ''
-# winner_x = false
-# winner_o = false
 
 # This loop will run every time the players will make a move,
 # the maximum allowed by the board space is 5
-if (turns <= 5) || (winner == false)
+while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
 
   # Player 1 will pick a number
   puts "#{player_x} pick a number 0-8"
   # The board is displayed so the user can see which number he will pick
   display_board(board)
-
   # Here the program shows the selection of player 1
+  puts "Turn number #{turns}, it's #{player_x}'s turn'"
   x_picked = gets.chomp
   token_x = 'x'
   board[x_picked.to_i] = token_x
   puts
 
+  # Here the program shows the selection of player 2
+  puts "Turn number #{turns}, it's #{player_o}'s turn'"
+  o_picked = gets.chomp
+  token_o = 'O'
+  board[o_picked.to_i] = token_o
+  puts
+  puts "#{player_o}  chose #{o_picked.to_i}"
+  display_board(board)
+  turns += 1
+  puts
+
   # this condition will validate whether the user has
   # chosen a valid movement or not
-
   if (ttt_board[0...8] != '') || token > 8
   end
   puts 'invalid move'
-  #   if is_valid == true
-  #     case picked_to_i
-  #     when 0
-  #       valid0 = false
-  #     when 1
-  #       valid1 = false
-  #     when 2
-  #       is_valid = false
-  #     when 3
-  #       is_valid = false
-  #     when 4
-  #       is_valid = false
-  #     when 5
-  #       is_valid = false
-  #     when 6
-  #       is_valid = false
-  #     when 7
-  #       is_valid = false
-  #     when 8
-  #       is_valid = false
-  #     end
-  #     puts "#{player_x} chose #{x_picked.to_i}"
-  #     display_board(board)
-  #     puts
-  #   else
-  #     puts "The number #{i} is already taken, please choose another one"
-  #     is_valid = true
-  #   end
-  # This condition will check if the user input is not already picked
-  #   if x_picked.to_i == i
-  #     case picked_to_i
-  #     when 0
-  #       is_valid = false if valid0 == false
-  #     when 1
-  #       is_valid = false if valid1 == false
-  #     when 2
-  #       is_valid = false if valid2 == false
-  #     when 3
-  #       is_valid = false if valid3 == false
-  #     when 4
-  #       is_valid = false if valid4 == false
-  #     when 5
-  #       is_valid = false if valid5 == false
-  #     when 6
-  #       is_valid = false if valid6 == false
-  #     when 7
-  #       is_valid = false if valid7 == false
-  #     when 8
-  #       is_valid = false if valid8 == false
-  #     else
-  #       is_valid = true
-  #     end
-  #   end
   # this part will evaluate the winner by using the winning
   # combinations for each player
-  if (ttt_board[0] == 'x') && (ttt_board[0] == ttt_board[1]) && (ttt_board[1] == ttt_board[2])
-    winner_x = true
-  end
+  winner_x = true if (ttt_board[0] == 'x') && (ttt_board[0] == ttt_board[1]) && (ttt_board[1] == ttt_board[2])
   winner_x = true if (ttt_board[3] == 'x') && (ttt_board[3] == ttt_board[4]) && (ttt_board[4] == ttt_board[5])
   winner_x = true if (ttt_board[6] == 'x') && (ttt_board[6] == ttt_board[7]) && (ttt_board[7] == ttt_board[8])
   winner_x = true if (ttt_board[0] == 'x') && (ttt_board[0] == ttt_board[3]) && (ttt_board[3] == ttt_board[6])
@@ -138,7 +72,6 @@ if (turns <= 5) || (winner == false)
   winner_x = true if (ttt_board[2] == 'x') && (ttt_board[2] == ttt_board[5]) && (ttt_board[5] == ttt_board[8])
   winner_x = true if (ttt_board[6] == 'x') && (ttt_board[6] == ttt_board[4]) && (ttt_board[4] == ttt_board[2])
   winner_x = true if (ttt_board[8] == 'x') && (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
-  puts "#{player_x} you are the winner!!"
 
   winner_o = true if (ttt_board[0] == 'o') && (ttt_board[0] == ttt_board[1]) && (ttt_board[1] == ttt_board[2])
   winner_o = true if (ttt_board[3] == 'o') && (ttt_board[3] == ttt_board[4]) && (ttt_board[4] == ttt_board[5])
@@ -148,39 +81,16 @@ if (turns <= 5) || (winner == false)
   winner_o = true if (ttt_board[2] == 'o') && (ttt_board[2] == ttt_board[5]) && (ttt_board[5] == ttt_board[8])
   winner_o = true if (ttt_board[6] == 'o') && (ttt_board[6] == ttt_board[4]) && (ttt_board[4] == ttt_board[2])
   winner_o = true if (ttt_board[8] == 'o') && (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
+end
+
+# This condition will check if a user has already won or not
+if winner_x == true
+  puts "#{player_x} you are the winner!!"
+elsif winner_o == true
   puts "#{player_o} you are the winner!!"
-
-  else
-    puts "It's a draw"
-
+else
+  puts "It's a draw"
 end
- turns += 1
-  # # Player 1 will pick a number
-  # puts "#{player_x} pick a number 0-8"
-  # The board is displayed so the user can see which number he will pick
-  # display_board(board)
-  # board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  #
-  # Here the program shows the selection of player 1
-  # x_picked = gets.chomp
-  # token_x = 'X'
-  # board[x_picked.to_i] = token_x
-  # puts
-  # puts "#{player_x} chose #{x_picked.to_i}"
-  # display_board(board)
-  # puts
-  #
-  # It is player 2's turn to pick a number
-  # puts "#{player_o} pick a number 0-8"
-  # display_board(board)
-  # board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  #
-  # Here is displayed the selection of player 2
-  # o_picked = gets.chomp
-  # token_o = 'O'
-  # board[o_picked.to_i] = token_o
-  # puts
-  # puts "#{player_o}  chose #{o_picked.to_i}"
-  # display_board(board)
-end
+
+# rubocop:enable Lint/UselessAssignment
 # rubocop:enable LineLength
