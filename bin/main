@@ -30,6 +30,117 @@ end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
+ttt_board[0] = 0
+ttt_board[0] = 1
+ttt_board[0] = 2
+ttt_board[0] = 3
+ttt_board[0] = 4
+ttt_board[0] = 5
+ttt_board[0] = 6
+ttt_board[0] = 7
+ttt_board[0] = 8
+
+valid0 = true
+valid1 = true
+valid2 = true
+valid3 = true
+valid4 = true
+valid5 = true
+valid6 = true
+valid7 = true
+valid8 = true
+winner = false
+turns = 0
+
+#This loop will run every time the players will make a move, the maximum allowed by the board space is 5
+while turns <= 5 do or winner == false
+
+    # Player 1 will pick a number
+  puts "#{player_x} pick a number 0-8"
+
+
+  # The board is displayed so the user can see which number he will pick
+  display_board(board)
+
+  is_valid = true
+  #This condition will check if the user input is not already picked
+  if x_picked.to_i = i
+    case picked_to_i
+    when 0
+      if valid0 == false
+        is_valid = false
+      end
+    when 1
+      if valid1 == false
+        is_valid = false
+      end
+    when 2
+      if valid2 == false
+        is_valid = false
+      end
+    when 3
+      if valid3 == false
+        is_valid = false
+      end
+    when 4
+      if valid4 == false
+        is_valid = false
+      end
+    when 5
+      if valid5 == false
+        is_valid = false
+      end
+    when 6
+      if valid6 == false
+        is_valid = false
+      end
+    when 7
+      if valid7 == false
+      is_valid = false
+      end
+    when 8
+      if valid8 == false
+        is_valid = false
+      end
+    end
+  end
+
+
+  #this condition will validate whether the user has chosen a valid movement or not
+  if is_valid == true
+    case picked_to_i
+    when 0
+      valid0 = false
+    when 1
+      valid1 = false
+    when 2
+      valid2 = false
+    when 3
+      valid3 = false
+    when 4
+      valid4 = false
+    when 5
+      valid5 = false
+    when 6
+      valid6 = false
+    when 7
+      valid7 = false
+    when 8
+      valid8 = false
+    end
+  else 
+    puts "The number #{i} is already taken, please choose another one"
+    is_valid = true
+  end
+
+  if 
+
+end
+
+
+
+
+=begin
 # Player 1 will pick a number
 puts "#{player_x} pick a number 0-8"
 # The board is displayed so the user can see which number he will pick
@@ -57,3 +168,4 @@ board[o_picked.to_i] = token_o
 puts
 puts "#{player_o}  chose #{o_picked.to_i}"
 display_board(board)
+=end
