@@ -38,6 +38,8 @@ Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
   AllowForAlignment: false
+  Layout/EndOfLine:
+  EnforcedStyle: lf
 Layout/MultilineMethodCallIndentation:
   Enabled: true
   EnforcedStyle: indented
@@ -49,6 +51,10 @@ Lint/StructNewOverride:
   Enabled: false
 Lint/UselessAssignment:
   Enabled: false
+  Style/Encoding:
+  Enabled: false
+Layout/LineLength:
+  Max: 99
 Style/HashEachMethods:
   Enabled: false
 Style/HashTransformKeys:
