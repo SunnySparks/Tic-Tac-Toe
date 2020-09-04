@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-# frozen_string_literal: true
 
 puts '
 _______ _          _______             _______
@@ -124,4 +123,3 @@ elsif winner_o == true
 else
   puts "It's a draw"
 end
-# frozen_string_literal: true
