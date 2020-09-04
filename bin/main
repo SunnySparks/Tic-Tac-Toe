@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 puts '
 _______ _          _______             _______
 |__   __(_)        |__   __|           |__   __|
@@ -86,8 +88,8 @@ while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
                      (ttt_board[6] == ttt_board[4]) &&
                      (ttt_board[4] == ttt_board[2])
   winner_x = true if (ttt_board[8] == 'x') &&
-                     (ttt_board[8] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[0])
+                     (ttt_board[8] == ttt_board[4]) && (ttt_board[4] == ttt_board[0])
+
   winner_o = true if (ttt_board[0] == 'o') &&
                      (ttt_board[0] == ttt_board[1]) &&
                      (ttt_board[1] == ttt_board[2])
