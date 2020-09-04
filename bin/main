@@ -124,3 +124,4 @@ elsif winner_o == true
 else
   puts "It's a draw"
 end
+# frozen_string_literal: true
