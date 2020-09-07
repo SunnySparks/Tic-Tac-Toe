@@ -28,7 +28,7 @@ end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-turns = 0
+turns = 1
 
 winner_x = false
 winner_o = false
@@ -37,7 +37,7 @@ winner_o = false
 # This loop will run every time the players will make a move,
 # the maximum allowed by the board space is 5
 while turns < 9 &&( winner_x == false && winner_o == false ) 
-g
+
   # Player 1 will pick a number
   puts "Turn number #{turns}, it's #{player_x}'s turn'"
   # The board is displayed so the user can see which number he will pick
@@ -122,7 +122,5 @@ end
   elsif
     p "no body wins!!"
   end
-  
-
 
 
