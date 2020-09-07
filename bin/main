@@ -28,7 +28,7 @@ end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
-turns = 0
+turns = 1
 
 winner_x = false
 winner_o = false
@@ -36,8 +36,8 @@ winner_o = false
 
 # This loop will run every time the players will make a move,
 # the maximum allowed by the board space is 5
-while (turns >= 3 && turns <= 9 || winner_x == false && winner_o == false) 
-
+while (winner_x == false && winner_o == false) 
+  
   # Player 1 will pick a number
   puts "Turn number #{turns}, it's #{player_x}'s turn'"
   # The board is displayed so the user can see which number he will pick
@@ -88,7 +88,6 @@ winner_x = true if (board[0] == 'X') &&
   winner_x = true if (board[8] == 'X') &&
                      (board[8] == board[4]) &&
                      (board[4] == board[0])
-puts "corrio el x"
   winner_o = true if (board[0] == 'O') &&
                      (board[0] == board[1]) &&
                      (board[1] == board[2])
@@ -114,15 +113,19 @@ puts "corrio el x"
                      (board[8] == board[4]) &&
                      (board[4] == board[0])
 end
-if winner_o == true
-  p " winner #{player_o} wins!"
-end
+
+if turns > 3 && turns <= 9
+  if winner_o == true
+    p " winner #{player_o} wins!"
+  end
   if winner_x ==true
     p "winer #{player_x} wins!"
-  elsif
-    p "no body wins!!"
   end
-  
+end 
+
+if turns >= 9 && winner_o == false || turns >= 9 && winner_x == false
+  p "nobody wins. winner winner...chicken dinner"
+end
 
 
 
