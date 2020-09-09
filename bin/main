@@ -19,7 +19,7 @@ player_o = gets.chomp
 puts "And #{player_o}, you will be the Os"
 puts
 def display_board(ttt_board)
-  puts "#{ttt_board[0]}(0) | #{ttt_board[1]}(1)   |#{ttt_board[2]}(2)"
+  puts "#{ttt_board[0]} | #{ttt_board[1]}   |#{ttt_board[2]}"
   puts '______________________'
   puts "#{ttt_board[3]}(3) | #{ttt_board[4]}(4)   |#{ttt_board[5]}(5)"
   puts '______________________'
@@ -27,7 +27,6 @@ def display_board(ttt_board)
 end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
 turns = 1
 
 winner_x = false
@@ -50,14 +49,20 @@ while turns < 9 &&( winner_x == false && winner_o == false )
   display_board(board)
   puts "#{player_x} pick a number 0-8"
   x_picked = gets.chomp
-  token_x = 'X'
-  if board[x_picked.to_i] != 'X' || board[x_picked.to_i] != 'O'
-    board[x_picked.to_i] = token_x
-  else
-    puts "Invalid movement, please try again"
-    x_picked = gets.chomp
-    board[x_picked.to_i] = token_x
+  for i in 0..board.length
+    if board[x_picked.to_i] == "X"
+      puts "X wrong choice, pick another number #{board[x_picked.to_i]}"
+      x_picked = gets.chomp
+    elsif board[x_picked.to_i] == "O"
+      puts "O wrong choice, pick another number #{board[x_picked.to_i]}"
+      x_picked = gets.chomp
+    else
+      token_x = 'X'
+      board[x_picked.to_i] = token_x
+      break
+    end
   end
+  board[x_picked.to_i] = token_x
   puts
   turns +=1
 winner_x = true if (board[0] == 'X') &&
@@ -93,12 +98,18 @@ winner_x = true if (board[0] == 'X') &&
   puts "#{player_o} pick a number 0-8"
   o_picked = gets.chomp
   token_o = 'O'
-  if board[o_picked.to_i] != 'X' || board[o_picked.to_i] != 'O'
-    board[o_picked.to_i] = token_o
-  else
-    puts "Invalid movement, please try again"
-    o_picked = gets.chomp
-    board[o_picked.to_i] = token_o
+  for i in 0..board.length
+    if board[o_picked.to_i] == "X"
+      puts "X wrong choice, pick another number #{board[o_picked.to_i]}"
+      o_picked = gets.chomp
+    elsif board[o_picked.to_i] == "O"
+      puts "O wrong choice, pick another number #{board[o_picked.to_i]}"
+      o_picked = gets.chomp
+    else
+      token_o = 'X'
+      board[o_picked.to_i] = token_o
+      break
+    end
   end
   puts
   puts "#{player_o}  chose #{o_picked.to_i}"
