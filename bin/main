@@ -33,13 +33,27 @@ winner_x = false
 winner_o = false
 
 
-def if_wins(winner, player)
+def if_wins(winner, player, b)
     if winner == true
       p "winner #{player} wins!"
+      display_board(b)
     end
 end
-
-
+def empty_validation
+  for i in 0..board.length
+    if board[x_picked.to_i] == "X"
+      puts "X wrong choice, pick another number #{board[x_picked.to_i]}"
+      x_picked = gets.chomp
+    elsif board[x_picked.to_i] == "O"
+      puts "O wrong choice, pick another number #{board[x_picked.to_i]}"
+      x_picked = gets.chomp
+    else
+      token_x = 'X'
+      board[x_picked.to_i] = token_x
+      break
+    end
+  end
+end
 
 while turns < 9 &&( winner_x == false && winner_o == false ) 
 
@@ -89,7 +103,7 @@ winner_x = true if (board[0] == 'X') &&
   winner_x = true if (board[8] == 'X') &&
                      (board[8] == board[4]) &&
                      (board[4] == board[0])
-  if_wins(winner_x, player_x)
+  if_wins(winner_x, player_x, board)
   return player_x if winner_x == true
   # Here the program shows the selection of player 2
   puts "Turn number #{turns}, it's #{player_o}'s turn'"
@@ -106,7 +120,7 @@ winner_x = true if (board[0] == 'X') &&
       puts "O wrong choice, pick another number #{board[o_picked.to_i]}"
       o_picked = gets.chomp
     else
-      token_o = 'X'
+      token_o = 'O'
       board[o_picked.to_i] = token_o
       break
     end
@@ -141,7 +155,7 @@ winner_x = true if (board[0] == 'X') &&
                      (board[8] == board[4]) &&
                      (board[4] == board[0])
 
-  if_wins(winner_o, player_o)
+  if_wins(winner_o, player_o, board)
   return player_o if winner_o == true
 end
 
