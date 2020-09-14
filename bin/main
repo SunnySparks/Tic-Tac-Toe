@@ -39,6 +39,8 @@ def if_wins(winner, player, b)
       display_board(b)
     end
 end
+
+
 def empty_validation
   for i in 0..board.length
     if board[x_picked.to_i] == "X"
@@ -54,6 +56,7 @@ def empty_validation
     end
   end
 end
+
 
 while turns < 9 &&( winner_x == false && winner_o == false ) 
 
