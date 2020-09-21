@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-
 puts '
 _______ _          _______             _______
 |__   __(_)        |__   __|           |__   __|
@@ -8,7 +7,9 @@ _______ _          _______             _______
    | |  | |/ __|______| |/ _` |/ __|______| |/ _ \ / _ \
    | |  | | (__       | | (_| | (__       | | (_) |  __/
    |_|  |_|\___|      |_|\__,_|\___|      |_|\___/ \___|
-'
+   \n
+   '
+require_relative '../lib/board.rb'
 # In this section, we will prompt the users' names to be identified
 puts 'Insert name for Player X'
 player_x = gets.chomp
@@ -18,13 +19,6 @@ puts 'Insert name for Player O'
 player_o = gets.chomp
 puts "And #{player_o}, you will be the Os"
 puts
-def display_board(ttt_board)
-  puts "#{ttt_board[0]} | #{ttt_board[1]}   |#{ttt_board[2]}"
-  puts '______________________'
-  puts "#{ttt_board[3]}(3) | #{ttt_board[4]}(4)   |#{ttt_board[5]}(5)"
-  puts '______________________'
-  puts "#{ttt_board[6]}(6) | #{ttt_board[7]}(7)   |#{ttt_board[8]}(8)"
-end
 
 board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 turns = 1
@@ -36,7 +30,7 @@ winner_o = false
 def if_wins(winner, player, b)
     if winner == true
       p "winner #{player} wins!"
-      display_board(b)
+      puts TheBoard.new.display_board
     end
 end
 
@@ -63,22 +57,10 @@ while turns < 9 &&( winner_x == false && winner_o == false )
   # Player 1 will pick a number
   puts "Turn number #{turns}, it's #{player_x}'s turn'"
   puts
-  display_board(board)
+  puts TheBoard.new.display_board
   puts "#{player_x} pick a number 0-8"
   x_picked = gets.chomp
-  for i in 0..board.length
-    if board[x_picked.to_i] == "X"
-      puts "X wrong choice, pick another number #{board[x_picked.to_i]}"
-      x_picked = gets.chomp
-    elsif board[x_picked.to_i] == "O"
-      puts "O wrong choice, pick another number #{board[x_picked.to_i]}"
-      x_picked = gets.chomp
-    else
-      token_x = 'X'
-      board[x_picked.to_i] = token_x
-      break
-    end
-  end
+  IfItsEmpty
   board[x_picked.to_i] = token_x
   puts
   turns +=1
@@ -111,7 +93,7 @@ winner_x = true if (board[0] == 'X') &&
   # Here the program shows the selection of player 2
   puts "Turn number #{turns}, it's #{player_o}'s turn'"
   puts
-  display_board(board)
+  puts TheBoard.new.display_board
   puts "#{player_o} pick a number 0-8"
   o_picked = gets.chomp
   token_o = 'O'

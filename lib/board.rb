@@ -1,15 +1,61 @@
-class The_board
-    attr_reader :board
-    def initialize(board=nil)
-        @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+class TheBoard
+    attr_reader :grid
+    def initialize
+        @grid = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
     end
     def display_board
-        "        #{@board[0]}(0) | #{@board[1]}(1)   |#{@board[2]}(2)\n
+        "        #{@grid[0]}(0) | #{@grid[1]}(1)   |#{@grid[2]}(2)\n
         ______________________\n
-        #{@board[3]}(3) | #{@board[4]}(4)   |#{@board[5]}(5)\n
+        #{@grid[3]}(3) | #{@grid[4]}(4)   |#{@grid[5]}(5)\n
         ______________________\n
-        #{@board[6]}(6) | #{@board[7]}(7)   |#{@board[8]}(8)"
+        #{@grid[6]}(6) | #{@grid[7]}(7)   |#{@grid[8]}(8)"
     end
 end
 
-puts The_board.new.display_board
+
+class TurnValidator
+  attr_reader :token
+  def initialize
+    @turn = @turn.to_i
+    if @turn % 2 == 0
+      @token = 'O'
+      puts "TurnValidator Token = #{@token} #{@token.class}"
+    elsif @turn % 2 == 1 
+      @token = 'X'
+      puts "TurnValidator Token = #{@token} #{@token.class}"
+    end
+    end
+end
+
+
+class IfItsEmpty
+  attr_reader :board
+    def initialize
+        @board = TheBoard.new.grid
+    end
+    @turn = 2
+    @tkn = TurnValidator.new.token
+    x_picked = gets.chomp
+    9.times do 
+    hello = IfItsEmpty.new.board
+        if hello[x_picked.to_i] == "X"
+          puts "X wrong choice, pick another number #{hello[x_picked.to_i]}"
+          x_picked = gets.chomp
+        elsif hello[x_picked.to_i] == "O"
+          puts "O wrong choice, pick another number #{hello[x_picked.to_i]}"
+          x_picked = gets.chomp
+       else
+        TurnValidator 
+        puts @tkn.class
+          puts "Turn #{@turn}"
+          puts "IfItsEmpty Token = #{@tkn}"
+          hello[x_picked.to_i] = @tkn
+          print hello
+          puts
+          @turn += 1
+       end
+      end
+end
+
+
+
