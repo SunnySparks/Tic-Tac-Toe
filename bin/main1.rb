@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require_relative '../lib/board.rb'
-require_relative '../lib/player.rb'
+require_relative '../lib/player1.rb'
 
 puts 'Insert name for Player X'
 player_x = Player.new(gets.chomp)
