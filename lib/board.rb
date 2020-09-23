@@ -14,9 +14,11 @@ end
 
 
 class TurnValidator
-  attr_reader :token
-  def initialize
-    @turn = @turn.to_i
+  attr_accessor :token, :turn
+  
+  def validation(turn, token)
+    @turn = turn
+    @token = token
     if @turn % 2 == 0
       @token = 'O'
       puts "TurnValidator Token = #{@token} #{@token.class}"
@@ -33,8 +35,8 @@ class IfItsEmpty
     def initialize
         @board = TheBoard.new.grid
     end
-    @turn = 2
-    @tkn = TurnValidator.new.token
+    turn = 2
+    @token = TurnValidator.new
     x_picked = gets.chomp
     9.times do 
     hello = IfItsEmpty.new.board
@@ -44,18 +46,20 @@ class IfItsEmpty
         elsif hello[x_picked.to_i] == "O"
           puts "O wrong choice, pick another number #{hello[x_picked.to_i]}"
           x_picked = gets.chomp
-       else
+=begin else
         TurnValidator 
-        puts @tkn.class
+        puts @token.class
           puts "Turn #{@turn}"
-          puts "IfItsEmpty Token = #{@tkn}"
-          hello[x_picked.to_i] = @tkn
+          puts "IfItsEmpty Token = #{@token}"
+          hello[x_picked.to_i] = @token
           print hello
           puts
-          @turn += 1
-       end
-      end
+          turn += 1
+=end      
 end
+      
 
 
 
+end
+end
