@@ -41,6 +41,8 @@ def if_wins_o(winner, player, b)
   end
 end
 
+
+
   board = Board.new
   @b = board.reset!
   puts board.display_board
@@ -123,4 +125,8 @@ while turn <=9
 
 turn +=1
 
+end
+
+if turn >= 9
+  puts "It's a tie"
 end
