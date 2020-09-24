@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+require_relative 'player1.rb'
+require_relative 'board.rb'
+
+
+
 
 puts '
 _______ _          _______             _______
@@ -9,11 +14,6 @@ _______ _          _______             _______
    |_|  |_|\___|      |_|\__,_|\___|      |_|\___/ \___|
    \n
    '
-
-require_relative 'player1.rb'
-require_relative 'board.rb'
-
-
 
 
 
@@ -112,7 +112,7 @@ while turn <=9
   puts "pick a number 1-9"
   input= gets.chomp.to_i-1
   if input > 8
-    puts "Invalild movement, please select a number from 1 to 9"
+    puts "Invalild move, please select a number from 1 to 9"
   else
   if board.taken?(input) 
       board.update(input, current_player)

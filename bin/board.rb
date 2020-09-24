@@ -27,14 +27,7 @@ class Board
          turn[1]
         end
       end
-   
-        def full
-          @board.all?(String)
-        end
-def turn_count
-  board.turn_count{|char| char == "X" || char == "O" }
-  end
-
+  
     def taken? (input)
     if  @board [input]== "X" || @board[input]== "O"
       false
