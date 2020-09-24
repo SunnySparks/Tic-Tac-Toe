@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
+# rubocop: disable Metrics/PerceivedComplexity
+# rubocop: disable Metrics/CyclomaticComplexity
+# rubocop: disable Metrics/MethodLength
+# rubocop: disable Metrics/AbcSize
 require_relative '../lib/player1.rb'
 require_relative '../lib/board.rb'
-
-
-
 
 puts '
 _______ _          _______             _______
@@ -14,118 +15,112 @@ _______ _          _______             _______
    |_|  |_|\___|      |_|\__,_|\___|      |_|\___/ \___|
    '
 
-
-
-puts "Hello and welcome to Tic Tac Toe Game."
-puts "Player 1: enter your name "
+puts 'Hello and welcome to Tic Tac Toe Game.'
+puts 'Player 1: enter your name '
 name_one = gets.chomp
 player_x = Player.new(name_one, 'X')
 puts "Player 1: #{name_one}, your token is 'X' "
-puts "Player 2: enter your name "
+puts 'Player 2: enter your name '
 name_two = gets.chomp
 player_o = Player.new(name_two, 'O')
 puts "Player 2: #{name_two}, your token is 'O' "
 @name_one = name_one
 @name_two = name_two
 
-def if_wins_x(winner, player, b)
-  if winner == true
-    p "winner #{@name_one} wins!"
-  end
+def if_wins_x(winner, _player, _bee)
+  p "winner #{@name_one} wins!" if winner == true
 end
 
-def if_wins_o(winner, player, b)
-  if winner == true
-    p "winner #{@name_two} wins!"
-  end
+def if_wins_o(winner, _player, _bee)
+  p "winner #{@name_two} wins!" if winner == true
 end
 
-
-
-  board = Board.new
-  @b = board.reset!
-  puts board.display_board
-  arr_players = [player_x, player_o]
-  current_player = arr_players[0]
-  turn =1
-  def win_x
+board = Board.new
+@b = board.reset!
+puts board.display_board
+arr_players = [player_x, player_o]
+current_player = arr_players[0]
+turn = 1
+def win_x
   @winner_x = true if (@b[0] == 'X') &&
-  (@b[0] == @b[1]) &&
-  (@b[1] == @b[2])
-@winner_x = true if (@b[3] == 'X') &&
-  (@b[3] == @b[4]) &&
-  (@b[4] == @b[5])
-@winner_x = true if (@b[6] == 'X') &&
-  (@b[6] == @b[7]) &&
-  (@b[7] == @b[8])
-@winner_x = true if (@b[0] == 'X') &&
-  (@b[0] == @b[3]) &&
-  (@b[3] == @b[6])
-@winner_x = true if (@b[1] == 'X') &&
-  (@b[1] == @b[4]) &&
-  (@b[4] == @b[7])
-@winner_x = true if (@b[2] == 'X') &&
-  (@b[2] == @b[5]) &&
-  (@b[5] == @b[8])
-@winner_x = true if (@b[6] == 'X') &&
-  (@b[6] == @b[4]) &&
-  (@b[4] == @b[2])
-@winner_x = true if (@b[8] == 'X') &&
-  (@b[8] == @b[4]) &&
-  (@b[4] == @b[0])
-  end
+                      (@b[0] == @b[1]) &&
+                      (@b[1] == @b[2])
+  @winner_x = true if (@b[3] == 'X') &&
+                      (@b[3] == @b[4]) &&
+                      (@b[4] == @b[5])
+  @winner_x = true if (@b[6] == 'X') &&
+                      (@b[6] == @b[7]) &&
+                      (@b[7] == @b[8])
+  @winner_x = true if (@b[0] == 'X') &&
+                      (@b[0] == @b[3]) &&
+                      (@b[3] == @b[6])
+  @winner_x = true if (@b[1] == 'X') &&
+                      (@b[1] == @b[4]) &&
+                      (@b[4] == @b[7])
+  @winner_x = true if (@b[2] == 'X') &&
+                      (@b[2] == @b[5]) &&
+                      (@b[5] == @b[8])
+  @winner_x = true if (@b[6] == 'X') &&
+                      (@b[6] == @b[4]) &&
+                      (@b[4] == @b[2])
+  @winner_x = true if (@b[8] == 'X') &&
+                      (@b[8] == @b[4]) &&
+                      (@b[4] == @b[0])
+end
 
-  def win_o
+def win_o
   @winner_o = true if (@b[0] == 'O') &&
-  (@b[0] == @b[1]) &&
-  (@b[1] == @b[2])
-@winner_o = true if (@b[3] == 'O') &&
-  (@b[3] == @b[4]) &&
-  (@b[4] == @b[5])
-@winner_o = true if (@b[6] == 'O') &&
-  (@b[6] == @b[7]) &&
-  (@b[7] == @b[8])
-@winner_o = true if (@b[0] == 'O') &&
-  (@b[0] == @b[3]) &&
-  (@b[3] == @b[6])
-@winner_o = true if (@b[1] == 'O') &&
-  (@b[1] == @b[4]) &&
-  (@b[4] == @b[7])
-@winner_o = true if (@b[2] == 'O') &&
-  (@b[2] == @b[5]) &&
-  (@b[5] == @b[8])
-winner_o = true if (@b[6] == 'O') &&
-  (@b[6] == @b[4]) &&
-  (@b[4] == @b[2])
-@winner_o = true if (@b[8] == 'O') &&
-  (@b[8] == @b[4]) &&
-  (@b[4] == @b[0])
-  end
-while turn <=9
+                      (@b[0] == @b[1]) &&
+                      (@b[1] == @b[2])
+  @winner_o = true if (@b[3] == 'O') &&
+                      (@b[3] == @b[4]) &&
+                      (@b[4] == @b[5])
+  @winner_o = true if (@b[6] == 'O') &&
+                      (@b[6] == @b[7]) &&
+                      (@b[7] == @b[8])
+  @winner_o = true if (@b[0] == 'O') &&
+                      (@b[0] == @b[3]) &&
+                      (@b[3] == @b[6])
+  @winner_o = true if (@b[1] == 'O') &&
+                      (@b[1] == @b[4]) &&
+                      (@b[4] == @b[7])
+  @winner_o = true if (@b[2] == 'O') &&
+                      (@b[2] == @b[5]) &&
+                      (@b[5] == @b[8])
+  @winner_o = true if (@b[6] == 'O') &&
+                      (@b[6] == @b[4]) &&
+                      (@b[4] == @b[2])
+  @winner_o = true if (@b[8] == 'O') &&
+                      (@b[8] == @b[4]) &&
+                      (@b[4] == @b[0])
+end
+while turn <= 9
   win_x
   win_o
   if_wins_x(@winner_x, current_player, @b)
   return name_one if @winner_x == true
+
   if_wins_o(@winner_o, current_player, @b)
   return name_two if @winner_o == true
-  puts "pick a number 1-9"
-  input= gets.chomp.to_i-1
+
+  puts 'pick a number 1-9'
+  input = gets.chomp.to_i - 1
   if input > 8
-    puts "Invalild move, please select a number from 1 to 9"
+    puts 'Invalild move, please select a number from 1 to 9'
+  elsif board.taken?(input)
+    board.update(input, current_player)
+    current_player = board.next_player(current_player, arr_players)
   else
-  if board.taken?(input) 
-      board.update(input, current_player)
-      current_player = board.next_player(current_player, arr_players)
-  else
-      puts "Position taken, please choose another one: "
-    end
+    puts 'Position taken, please choose another one: '
   end
   board.display_board
 
-turn +=1
+  turn += 1
 
 end
 
-if turn >= 9
-  puts "It's a tie"
-end
+puts "It's a tie" if turn >= 9
+# rubocop: enable Metrics/AbcSize
+# rubocop: enable Metrics/MethodLength
+# rubocop: enable Metrics/CyclomaticComplexity
+# rubocop: enable Metrics/PerceivedComplexity
