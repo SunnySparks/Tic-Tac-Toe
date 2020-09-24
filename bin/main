@@ -14,11 +14,10 @@ puts "Player 2: enter your name "
 name_two = gets.chomp
 player_o = Player.new(name_two, 'O')
 puts "Player 2: #{name_two}, your token is 'O' "
-
+@name_one = name_one
 def if_wins(winner, player, b)
   if winner == true
-    p "winner #{current_player} wins!"
-    puts Board.new.display_board
+    p "winner #{@name_one} wins!"
   end
 end
 
@@ -66,7 +65,7 @@ while turn <=9
                      (b[8] == b[4]) &&
                      (b[4] == b[0])
   if_wins(winner_x, current_player, b)
-  return player_x if winner_x == true
+  return name_one if winner_x == true
  board.display_board
 turn +=1
 
