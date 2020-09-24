@@ -18,16 +18,7 @@ class Board
         puts "#{@board[6]}(7) | #{@board[7]} (8)  |#{@board[8]}()"
       end
 
-      @win = false 
       
-      def winner
-        @win = true if (@board[0] == @board[1]) &&
-        (@board[1] == @board[2])
-        @win = true if (@board[3] == @board[4]) &&
-        (@board[4] == @board[5])
-        @win = true if (@board[6] == @board[7]) &&
-        (@board[7] == @board[8])
-      end
      
       def next_player(current_player, turn)
         if current_player == turn[1]

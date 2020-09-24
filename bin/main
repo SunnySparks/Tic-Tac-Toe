@@ -1,149 +1,73 @@
-#!/usr/bin/env ruby
+require_relative 'player1.rb'
+require_relative 'board.rb'
 
-puts '
-_______ _          _______             _______
-|__   __(_)        |__   __|           |__   __|
-   | |   _  ___ ______| | __ _  ___ ______| | ___   ___
-   | |  | |/ __|______| |/ _` |/ __|______| |/ _ \ / _ \
-   | |  | | (__       | | (_| | (__       | | (_) |  __/
-   |_|  |_|\___|      |_|\__,_|\___|      |_|\___/ \___|
-   \n
-   '
-require_relative '../lib/board.rb'
-# In this section, we will prompt the users' names to be identified
-puts 'Insert name for Player X'
-player_x = gets.chomp
-puts "Alrigth #{player_x}, you will be the Xs"
-puts
-puts 'Insert name for Player O'
-player_o = gets.chomp
-puts "And #{player_o}, you will be the Os"
-puts
 
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-turns = 1
 
-winner_x = false
-winner_o = false
 
+
+puts "Hello and welcome to Tic Tac Toe Game."
+puts "Player 1: enter your name "
+name_one = gets.chomp
+player_x = Player.new(name_one, 'X')
+puts "Player 1: #{name_one}, your token is 'X' "
+puts "Player 2: enter your name "
+name_two = gets.chomp
+player_o = Player.new(name_two, 'O')
+puts "Player 2: #{name_two}, your token is 'O' "
 
 def if_wins(winner, player, b)
-    if winner == true
-      p "winner #{player} wins!"
-      puts TheBoard.new.display_board
-    end
-end
-
-
-def empty_validation
-  for i in 0..board.length
-    if board[x_picked.to_i] == "X"
-      puts "X wrong choice, pick another number #{board[x_picked.to_i]}"
-      x_picked = gets.chomp
-    elsif board[x_picked.to_i] == "O"
-      puts "O wrong choice, pick another number #{board[x_picked.to_i]}"
-      x_picked = gets.chomp
-    else
-      token_x = 'X'
-      board[x_picked.to_i] = token_x
-      break
-    end
+  if winner == true
+    p "winner #{current_player} wins!"
+    puts Board.new.display_board
   end
 end
 
-
-while turns < 9 &&( winner_x == false && winner_o == false ) 
-
-  # Player 1 will pick a number
-  puts "Turn number #{turns}, it's #{player_x}'s turn'"
-  puts
-  puts TheBoard.new.display_board
-  puts "#{player_x} pick a number 0-8"
-  x_picked = gets.chomp
-  IfItsEmpty
-  board[x_picked.to_i] = token_x
-  puts
-  turns +=1
-winner_x = true if (board[0] == 'X') &&
-                     (board[0] == board[1]) &&
-                     (board[1] == board[2])
-  winner_x = true if (board[3] == 'X') &&
-                     (board[3] == board[4]) &&
-                     (board[4] == board[5])
-  winner_x = true if (board[6] == 'X') &&
-                     (board[6] == board[7]) &&
-                     (board[7] == board[8])
-  winner_x = true if (board[0] == 'X') &&
-                     (board[0] == board[3]) &&
-                     (board[3] == board[6])
-  winner_x = true if (board[1] == 'X') &&
-                     (board[1] == board[4]) &&
-                     (board[4] == board[7])
-  winner_x = true if (board[2] == 'X') &&
-                     (board[2] == board[5]) &&
-                     (board[5] == board[8])
-  winner_x = true if (board[6] == 'X') &&
-                     (board[6] == board[4]) &&
-                     (board[4] == board[2])
-  winner_x = true if (board[8] == 'X') &&
-                     (board[8] == board[4]) &&
-                     (board[4] == board[0])
-  if_wins(winner_x, player_x, board)
+  board = Board.new
+  b = board.reset!
+  puts board.display_board
+  arr_players = [player_x, player_o]
+  current_player = arr_players[0]
+  turn =1
+while turn <=9
+  puts "pick a number 1-9"
+  input= gets.chomp.to_i-1
+  if input > 8
+    puts "Invalild movement, please select a number from 1 to 9"
+  else
+  if board.taken?(input) 
+      board.update(input, current_player)
+      current_player = board.next_player(current_player, arr_players)
+  else
+      puts "Position taken, please choose another one: "
+    end
+  end
+  winner_x = true if (b[0] == 'X') &&
+                     (b[0] == b[1]) &&
+                     (b[1] == b[2])
+  winner_x = true if (b[3] == 'X') &&
+                     (b[3] == b[4]) &&
+                     (b[4] == b[5])
+  winner_x = true if (b[6] == 'X') &&
+                     (b[6] == b[7]) &&
+                     (b[7] == b[8])
+  winner_x = true if (b[0] == 'X') &&
+                     (b[0] == b[3]) &&
+                     (b[3] == b[6])
+  winner_x = true if (b[1] == 'X') &&
+                     (b[1] == b[4]) &&
+                     (b[4] == b[7])
+  winner_x = true if (b[2] == 'X') &&
+                     (b[2] == b[5]) &&
+                     (b[5] == b[8])
+  winner_x = true if (b[6] == 'X') &&
+                     (b[6] == b[4]) &&
+                     (b[4] == b[2])
+  winner_x = true if (b[8] == 'X') &&
+                     (b[8] == b[4]) &&
+                     (b[4] == b[0])
+  if_wins(winner_x, current_player, b)
   return player_x if winner_x == true
-  # Here the program shows the selection of player 2
-  puts "Turn number #{turns}, it's #{player_o}'s turn'"
-  puts
-  puts TheBoard.new.display_board
-  puts "#{player_o} pick a number 0-8"
-  o_picked = gets.chomp
-  token_o = 'O'
-  for i in 0..board.length
-    if board[o_picked.to_i] == "X"
-      puts "X wrong choice, pick another number #{board[o_picked.to_i]}"
-      o_picked = gets.chomp
-    elsif board[o_picked.to_i] == "O"
-      puts "O wrong choice, pick another number #{board[o_picked.to_i]}"
-      o_picked = gets.chomp
-    else
-      token_o = 'O'
-      board[o_picked.to_i] = token_o
-      break
-    end
-  end
-  puts
-  puts "#{player_o}  chose #{o_picked.to_i}"
-  turns += 1
-  puts
+ board.display_board
+turn +=1
 
-  winner_o = true if (board[0] == 'O') &&
-                     (board[0] == board[1]) &&
-                     (board[1] == board[2])
-  winner_o = true if (board[3] == 'O') &&
-                     (board[3] == board[4]) &&
-                     (board[4] == board[5])
-  winner_o = true if (board[6] == 'O') &&
-                     (board[6] == board[7]) &&
-                     (board[7] == board[8])
-  winner_o = true if (board[0] == 'O') &&
-                     (board[0] == board[3]) &&
-                     (board[3] == board[6])
-  winner_o = true if (board[1] == 'O') &&
-                     (board[1] == board[4]) &&
-                     (board[4] == board[7])
-  winner_o = true if (board[2] == 'O') &&
-                     (board[2] == board[5]) &&
-                     (board[5] == board[8])
-  winner_o = true if (board[6] == 'O') &&
-                     (board[6] == board[4]) &&
-                     (board[4] == board[2])
-  winner_o = true if (board[8] == 'O') &&
-                     (board[8] == board[4]) &&
-                     (board[4] == board[0])
-
-  if_wins(winner_o, player_o, board)
-  return player_o if winner_o == true
-end
-
-if winner_x == false && winner_o == false
-  p "It's a tie"
 end
