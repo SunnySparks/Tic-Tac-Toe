@@ -105,7 +105,12 @@ while turn <= 9
   if_wins_o(@winner_o, current_player, @b)
   return name_two if @winner_o == true
 
-  puts 'pick a number 1-9'
+  if current_player==player_x
+    puts "#{name_one} pick a number 1-9"
+    elsif
+      puts "#{name_two} pick a number 1-9"
+    end
+    input= gets.chomp.to_i-1
   input = gets.chomp.to_i - 1
   puts "Input #{input}"
   if input > 8 || input < 0
