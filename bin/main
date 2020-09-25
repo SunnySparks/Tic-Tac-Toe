@@ -94,7 +94,7 @@ def win_o
                       (@b[8] == @b[4]) &&
                       (@b[4] == @b[0])
 end
-while turn <= 9
+until @winner_o==true|| @winner_x==true || board.full ==true
   win_x
   win_o
   if_wins_x(@winner_x, current_player, @b)
@@ -109,21 +109,27 @@ while turn <= 9
   end
   input = gets.chomp.to_i - 1
   puts "Input #{input}"
-  if input > 8 || input.negative?
+  if input > 8 || input.negative? 
     puts 'Invalild move, please select a number from 1 to 9'
+  
   elsif board.taken?(input)
     board.update(input, current_player)
     current_player = board.next_player(current_player, arr_players)
+
   else
     puts 'Position taken, please choose another one: '
-  end
+   
+
+      end
   puts board.display_board
 
   turn += 1
+    end
+  if board.full == true
+    puts "no moves available, nobody wins"
+  end
 
-end
 
-puts "It's a tie" if turn >= 9
 # rubocop: enable Metrics/AbcSize
 # rubocop: enable Metrics/MethodLength
 # rubocop: enable Metrics/CyclomaticComplexity

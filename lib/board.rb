@@ -6,7 +6,7 @@ class Board
   end
 
   def reset!
-    @board = Array.new ['', '', '', '', '', '', '', '', '']
+    @board =[1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
   def display_board
@@ -24,7 +24,9 @@ class Board
       turn[1]
     end
   end
-
+  def full
+    @board.all?(String)
+  end
   def taken?(input)
     if @board [input] == 'X' || @board[input] == 'O'
       false
