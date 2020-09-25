@@ -35,6 +35,8 @@ def if_wins_o(winner, _player, _bee)
   p "winner #{@name_two} wins!" if winner == true
 end
 
+
+
 board = Board.new
 @b = board.reset!
 puts board.display_board
@@ -114,7 +116,7 @@ while turn <= 9
   else
     puts 'Position taken, please choose another one: '
   end
-  board.display_board
+  puts board.display_board
 
   turn += 1
 
