@@ -18,10 +18,18 @@ _______ _          _______             _______
 puts 'Hello and welcome to Tic Tac Toe Game.'
 puts 'Player 1: enter your name '
 name_one = gets.chomp
+while name_one == ""
+  puts 'Input empty, please enter your name Player 1: '
+  name_one = gets.chomp
+end
 player_x = Player.new(name_one, 'X')
 puts "Player 1: #{name_one}, your token is 'X' "
 puts 'Player 2: enter your name '
 name_two = gets.chomp
+while name_two == ""
+  puts 'Input empty, please enter your name Player 2: '
+  name_two = gets.chomp
+end
 player_o = Player.new(name_two, 'O')
 puts "Player 2: #{name_two}, your token is 'O' "
 @name_one = name_one
@@ -108,7 +116,6 @@ until @winner_o == true || @winner_x == true || board.full == true
   elsif puts "#{name_two} pick a number 1-9"
   end
   input = gets.chomp.to_i - 1
-  puts "Input #{input}"
   if input > 8 || input.negative?
     puts 'Invalild move, please select a number from 1 to 9'
 
