@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# rubocop: disable Lint/UselessAssignment
+require_relative '../lib/player1.rb'
+require_relative '../lib/board.rb'
 
 puts '
 _______ _          _______             _______
@@ -7,120 +10,65 @@ _______ _          _______             _______
    | |  | |/ __|______| |/ _` |/ __|______| |/ _ \ / _ \
    | |  | | (__       | | (_| | (__       | | (_) |  __/
    |_|  |_|\___|      |_|\__,_|\___|      |_|\___/ \___|
-'
-# In this section, we will prompt the users' names to be identified
-puts 'Insert name for Player X'
-player_x = gets.chomp
-puts "Alrigth #{player_x}, you will be the Xs"
-puts
-puts 'Insert name for Player O'
-player_o = gets.chomp
-puts "And #{player_o}, you will be the Os"
-puts
-def display_board(ttt_board)
-  puts "#{ttt_board[0]}(0) | #{ttt_board[1]}(1)   |#{ttt_board[2]}(2)"
-  puts '______________________'
-  puts "#{ttt_board[3]}(3) | #{ttt_board[4]}(4)   |#{ttt_board[5]}(5)"
-  puts '______________________'
-  puts "#{ttt_board[6]}(6) | #{ttt_board[7]}(7)   |#{ttt_board[8]}(8)"
+   '
+
+puts 'Hello and welcome to Tic Tac Toe Game.'
+puts 'Player 1: enter your name '
+name_one = gets.chomp
+while name_one == ''
+  puts 'Input empty, please enter your name Player 1: '
+  name_one = gets.chomp
 end
-
-board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-
-turns = 0
-
-# This loop will run every time the players will make a move,
-# the maximum allowed by the board space is 5
-while (turns <= 5 || winner_x == false) || (turns <= 5 || winner_o == false)
-
-  # Player 1 will pick a number
-  puts "Turn number #{turns}, it's #{player_x}'s turn'"
-  # The board is displayed so the user can see which number he will pick
-  display_board(board)
-  # Here the program shows the selection of player 1
-  puts
-  puts "#{player_x} pick a number 0-8"
-  x_picked = gets.chomp
-  token_x = 'x'
-  board[x_picked.to_i] = token_x
-  puts
-
-  # Here the program shows the selection of player 2
-  puts "Turn number #{turns}, it's #{player_o}'s turn'"
-  display_board(board)
-  puts "#{player_o} pick a number 0-8"
-  o_picked = gets.chomp
-  token_o = 'O'
-  board[o_picked.to_i] = token_o
-  puts
-  puts "#{player_o}  chose #{o_picked.to_i}"
-  display_board(board)
-  turns += 1
-  puts
-
-  # this condition will validate whether the user has
-  # chosen a valid movement or not
-  if (ttt_board[0...8] != '') || token > 8
+player_x = Player.new(name_one, 'X')
+puts "Player 1: #{name_one}, your token is 'X' "
+puts 'Player 2: enter your name '
+name_two = gets.chomp
+while name_two == ''
+  puts 'Input empty, please enter your name Player 2: '
+  name_two = gets.chomp
+end
+player_o = Player.new(name_two, 'O')
+puts "Player 2: #{name_two}, your token is 'O' "
+@name_one = name_one
+@name_two = name_two
+board = Board.new
+@b = board.reset!
+puts board.display_board
+arr_players = [player_x, player_o]
+current_player = arr_players[0]
+turn = 1
+winner = false
+until @winner == true || board.full == true
+  if current_player == player_x
+    puts "#{name_one} pick a number 1-9"
+  elsif puts "#{name_two} pick a number 1-9"
   end
-  puts 'invalid move'
-  # this part will evaluate the winner by using the winning
-  # combinations for each player
-  winner_x = true if (ttt_board[0] == 'x') &&
-                     (ttt_board[0] == ttt_board[1]) &&
-                     (ttt_board[1] == ttt_board[2])
-  winner_x = true if (ttt_board[3] == 'x') &&
-                     (ttt_board[3] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[5])
-  winner_x = true if (ttt_board[6] == 'x') &&
-                     (ttt_board[6] == ttt_board[7]) &&
-                     (ttt_board[7] == ttt_board[8])
-  winner_x = true if (ttt_board[0] == 'x') &&
-                     (ttt_board[0] == ttt_board[3]) &&
-                     (ttt_board[3] == ttt_board[6])
-  winner_x = true if (ttt_board[1] == 'x') &&
-                     (ttt_board[1] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[7])
-  winner_x = true if (ttt_board[2] == 'x') &&
-                     (ttt_board[2] == ttt_board[5]) &&
-                     (ttt_board[5] == ttt_board[8])
-  winner_x = true if (ttt_board[6] == 'x') &&
-                     (ttt_board[6] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[2])
-  winner_x = true if (ttt_board[8] == 'x') &&
-                     (ttt_board[8] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[0])
+  input = gets.chomp.to_i - 1
+  if input > 8 || input.negative?
+    puts 'Invalild move, please select a number from 1 to 9'
 
-  winner_o = true if (ttt_board[0] == 'o') &&
-                     (ttt_board[0] == ttt_board[1]) &&
-                     (ttt_board[1] == ttt_board[2])
-  winner_o = true if (ttt_board[3] == 'o') &&
-                     (ttt_board[3] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[5])
-  winner_o = true if (ttt_board[6] == 'o') &&
-                     (ttt_board[6] == ttt_board[7]) &&
-                     (ttt_board[7] == ttt_board[8])
-  winner_o = true if (ttt_board[0] == 'o') &&
-                     (ttt_board[0] == ttt_board[3]) &&
-                     (ttt_board[3] == ttt_board[6])
-  winner_o = true if (ttt_board[1] == 'o') &&
-                     (ttt_board[1] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[7])
-  winner_o = true if (ttt_board[2] == 'o') &&
-                     (ttt_board[2] == ttt_board[5]) &&
-                     (ttt_board[5] == ttt_board[8])
-  winner_o = true if (ttt_board[6] == 'o') &&
-                     (ttt_board[6] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[2])
-  winner_o = true if (ttt_board[8] == 'o') &&
-                     (ttt_board[8] == ttt_board[4]) &&
-                     (ttt_board[4] == ttt_board[0])
+  elsif board.taken?(input)
+    board.update(input, current_player)
+    current_player = board.next_player(current_player, arr_players)
+
+  else
+    puts 'Ooh, Ooh, that place its already taken.. please pick a different one '
+
+  end
+  puts board.display_board
+  possible_win = board.win
+  if possible_win == true
+    winner = true
+    if current_player == player_x
+      puts "#{name_two} you won"
+    elsif puts "#{name_one} you won"
+    end
+
+    break
+  end
+
+  puts 'no moves left, nobody wins' if board.full == true
+
 end
 
-# This condition will check if a user has already won or not
-if winner_x == true
-  puts "#{player_x} you are the winner!!"
-elsif winner_o == true
-  puts "#{player_o} you are the winner!!"
-else
-  puts "It's a draw"
-end
+# rubocop: enable Lint/UselessAssignment
