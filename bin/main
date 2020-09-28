@@ -34,83 +34,14 @@ player_o = Player.new(name_two, 'O')
 puts "Player 2: #{name_two}, your token is 'O' "
 @name_one = name_one
 @name_two = name_two
-
-def if_wins_x(winner, _player, _bee)
-  p "winner #{@name_one} wins!" if winner == true
-end
-
-def if_wins_o(winner, _player, _bee)
-  p "winner #{@name_two} wins!" if winner == true
-end
-
 board = Board.new
 @b = board.reset!
 puts board.display_board
 arr_players = [player_x, player_o]
 current_player = arr_players[0]
 turn = 1
-def win_x
-  @winner_x = true if (@b[0] == 'X') &&
-                      (@b[0] == @b[1]) &&
-                      (@b[1] == @b[2])
-  @winner_x = true if (@b[3] == 'X') &&
-                      (@b[3] == @b[4]) &&
-                      (@b[4] == @b[5])
-  @winner_x = true if (@b[6] == 'X') &&
-                      (@b[6] == @b[7]) &&
-                      (@b[7] == @b[8])
-  @winner_x = true if (@b[0] == 'X') &&
-                      (@b[0] == @b[3]) &&
-                      (@b[3] == @b[6])
-  @winner_x = true if (@b[1] == 'X') &&
-                      (@b[1] == @b[4]) &&
-                      (@b[4] == @b[7])
-  @winner_x = true if (@b[2] == 'X') &&
-                      (@b[2] == @b[5]) &&
-                      (@b[5] == @b[8])
-  @winner_x = true if (@b[6] == 'X') &&
-                      (@b[6] == @b[4]) &&
-                      (@b[4] == @b[2])
-  @winner_x = true if (@b[8] == 'X') &&
-                      (@b[8] == @b[4]) &&
-                      (@b[4] == @b[0])
-end
-
-def win_o
-  @winner_o = true if (@b[0] == 'O') &&
-                      (@b[0] == @b[1]) &&
-                      (@b[1] == @b[2])
-  @winner_o = true if (@b[3] == 'O') &&
-                      (@b[3] == @b[4]) &&
-                      (@b[4] == @b[5])
-  @winner_o = true if (@b[6] == 'O') &&
-                      (@b[6] == @b[7]) &&
-                      (@b[7] == @b[8])
-  @winner_o = true if (@b[0] == 'O') &&
-                      (@b[0] == @b[3]) &&
-                      (@b[3] == @b[6])
-  @winner_o = true if (@b[1] == 'O') &&
-                      (@b[1] == @b[4]) &&
-                      (@b[4] == @b[7])
-  @winner_o = true if (@b[2] == 'O') &&
-                      (@b[2] == @b[5]) &&
-                      (@b[5] == @b[8])
-  @winner_o = true if (@b[6] == 'O') &&
-                      (@b[6] == @b[4]) &&
-                      (@b[4] == @b[2])
-  @winner_o = true if (@b[8] == 'O') &&
-                      (@b[8] == @b[4]) &&
-                      (@b[4] == @b[0])
-end
-until @winner_o == true || @winner_x == true || board.full == true
-  win_x
-  win_o
-  if_wins_x(@winner_x, current_player, @b)
-  return name_one if @winner_x == true
-
-  if_wins_o(@winner_o, current_player, @b)
-  return name_two if @winner_o == true
-
+winner= false
+while winner = true
   if current_player == player_x
     puts "#{name_one} pick a number 1-9"
   elsif puts "#{name_two} pick a number 1-9"
@@ -124,15 +55,25 @@ until @winner_o == true || @winner_x == true || board.full == true
     current_player = board.next_player(current_player, arr_players)
 
   else
-    puts 'Position taken, please choose another one: '
+    puts 'Ooh, Ooh, that place its already taken.. please pick a different one '
 
   end
   puts board.display_board
-
+  possible_win = board.win
+  if possible_win == true
+    winner = true
+    if current_player == player_x
+      puts "#{name_two} you won"
+    elsif puts "#{name_one} you won"
+    end
+    
+    break
   turn += 1
 end
+
 puts 'no moves available, nobody wins' if board.full == true
 
+end
 # rubocop: enable Metrics/AbcSize
 # rubocop: enable Metrics/MethodLength
 # rubocop: enable Metrics/CyclomaticComplexity
