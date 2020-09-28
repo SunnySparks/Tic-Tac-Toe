@@ -1,5 +1,8 @@
+# rubocop: disable Metrics/PerceivedComplexity
+# rubocop: disable Metrics/CyclomaticComplexity
+# rubocop: disable Metrics/AbcSize
 class Board
-  attr_accessor :board
+  attr_reader :board
 
   def initialize
     reset!
@@ -16,6 +19,7 @@ class Board
   ______________________
     #{@board[6]}(7) | #{@board[7]} (8)  |#{@board[8]}(9)"
   end
+
   def win
     @win = false
     @win = true if @board[0] == @board[1] && @board[1] == @board[2]
@@ -57,3 +61,7 @@ class Board
     board[input] = player.token
   end
 end
+
+# rubocop: enable Metrics/PerceivedComplexity
+# rubocop: enable Metrics/CyclomaticComplexity
+# rubocop: enable Metrics/AbcSize

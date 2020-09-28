@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
-# rubocop: disable Metrics/PerceivedComplexity
-# rubocop: disable Metrics/CyclomaticComplexity
-# rubocop: disable Metrics/MethodLength
-# rubocop: disable Metrics/AbcSize
+# rubocop: disable Lint/UselessAssignment
 require_relative '../lib/player1.rb'
 require_relative '../lib/board.rb'
 
@@ -18,7 +15,7 @@ _______ _          _______             _______
 puts 'Hello and welcome to Tic Tac Toe Game.'
 puts 'Player 1: enter your name '
 name_one = gets.chomp
-while name_one == ""
+while name_one == ''
   puts 'Input empty, please enter your name Player 1: '
   name_one = gets.chomp
 end
@@ -26,7 +23,7 @@ player_x = Player.new(name_one, 'X')
 puts "Player 1: #{name_one}, your token is 'X' "
 puts 'Player 2: enter your name '
 name_two = gets.chomp
-while name_two == ""
+while name_two == ''
   puts 'Input empty, please enter your name Player 2: '
   name_two = gets.chomp
 end
@@ -40,8 +37,8 @@ puts board.display_board
 arr_players = [player_x, player_o]
 current_player = arr_players[0]
 turn = 1
-winner= false
-while winner = true
+winner = false
+until @winner == true || board.full == true
   if current_player == player_x
     puts "#{name_one} pick a number 1-9"
   elsif puts "#{name_two} pick a number 1-9"
@@ -66,15 +63,12 @@ while winner = true
       puts "#{name_two} you won"
     elsif puts "#{name_one} you won"
     end
-    
+
     break
-  turn += 1
+  end
+
+  puts 'no moves left, nobody wins' if board.full == true
+
 end
 
-puts 'no moves available, nobody wins' if board.full == true
-
-end
-# rubocop: enable Metrics/AbcSize
-# rubocop: enable Metrics/MethodLength
-# rubocop: enable Metrics/CyclomaticComplexity
-# rubocop: enable Metrics/PerceivedComplexity
+# rubocop: enable Lint/UselessAssignment
