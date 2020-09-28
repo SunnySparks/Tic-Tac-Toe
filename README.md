@@ -2,7 +2,7 @@
 
 A tic-tac-toe terminal game for two players
 
-![Homepage](App_Screenshot.png)
+![Homepage](screenshot.png)
 
 ## Built With
 
