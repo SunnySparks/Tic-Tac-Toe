@@ -17,6 +17,20 @@ A tic-tac-toe terminal game for two players
 - Please go to the provided live demo link, or 
 - Download the code from repository (https://github.com/SunnySparks/Tic-Tac-Toe) and execute the main file from your terminal, more detailed instructions below.
 
+### How to play tic-tac-toe
+
+- 1 The game is played on a grid that's 3 squares by 3 squares.
+
+- 2 Player 1 is X, your friend (player 2 in this case) is O. Players take turns putting their marks in empty squares.
+
+- 3 The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
+
+- 4 When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
+
+
+![Instructions](ttt-game.png)
+
+
 ### Prerequisites for demo link
 
 - Browser
@@ -25,10 +39,11 @@ A tic-tac-toe terminal game for two players
 ### Instructions for demo link
 
 - 1 Go to the demo link previously provided
-- 2 Type the name of the player 1 on the right side of the screen
-- 3 Type the name of player 2 on the right side of the screen
-- 4 Introduce the desired numbers (From 1 to 9) on the board for each player
-- 5 Have fun!
+- 2 On the right side of the screen type ruby bin/main
+- 3 Follow the instructions on the screen, Type the name of the player 1 
+- 4 Type the name of player 2
+- 5 Introduce the desired numbers (From 1 to 9) on the board for each player
+- 6 Have fun!
 
 ### Prerequisites for usage in terminal
 
